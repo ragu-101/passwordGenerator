@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import "./paswordgen/Pass"
 import Pass from './paswordgen/Pass';
 

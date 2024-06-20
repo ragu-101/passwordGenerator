@@ -33,6 +33,11 @@ input[type="number"]{
 .copy{
     position: relative;
 }
+.icon{
+    position: absolute;
+    top: 14px;
+    right: 107px;
+}
 @media (max-width:575px){
     .mycontainer{
         width:90%;

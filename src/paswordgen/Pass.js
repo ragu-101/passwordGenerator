@@ -1,5 +1,8 @@
 import './pass.css'
 import { useState } from "react";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+
 
 export default function Pass() {
   const [passwordlen, setpasswordLen] = useState(8);
@@ -7,6 +10,7 @@ export default function Pass() {
   const [lower, setLower] = useState(false);
   const [numbers, setNumbers] = useState(false);
   const [special, setSpecial] = useState(false);
+  const [iconstatus,setIconstatus] = useState(true);
   var [finalpass, setfinalPass] = useState("");
 
   const getpassword = () => {
@@ -38,6 +42,7 @@ export default function Pass() {
       alert("Please choose the type");
     }
   };
+
 
   function passCopy(e) {
     navigator.clipboard.writeText(finalpass);
@@ -103,8 +108,9 @@ export default function Pass() {
                 <label htmlFor="special">Special Characters</label>
                 </div>
                 <button onClick={getpassword} className='bg-green-500 p-2 rounded-2xl text-white my-4 hover:bg-red-700'>Generate</button>
-                <div className='copy'>
-                    <input type="text" value={finalpass} readOnly className='border-none p-2 rounded-l-2xl outline-0 w-48' />
+                <div className='copy relative'>
+                  {iconstatus ? <FaEye className='icon' onClick={()=>setIconstatus(!iconstatus)} /> : <FaEyeSlash className='icon' onClick={()=>setIconstatus(!iconstatus)}/>}
+                    <input type={iconstatus ? "text" : "password"} value={finalpass} readOnly className='border-none p-2 rounded-l-2xl outline-0 w-48' />
                     <button onClick={(e)=>passCopy(e)} className='bg-yellow-400 p-2 rounded-r-2xl capitalize'>copy</button>
                 </div>
             </div>
